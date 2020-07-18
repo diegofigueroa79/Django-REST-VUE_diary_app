@@ -1,0 +1,1 @@
+# Django-REST-AJAX_diary_app
