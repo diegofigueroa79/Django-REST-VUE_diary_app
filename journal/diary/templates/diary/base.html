@@ -12,7 +12,18 @@
     <script defer src="{% static 'diary/js/main.js' %}"></script>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 class="text-center">Dear Diary</h1>
+                <div class="row">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
 </body>
 </html>
