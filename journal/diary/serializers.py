@@ -4,5 +4,5 @@ from .models import Entry
 
 class EntrySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Task
+        model = Entry
         fields = '__all__'
