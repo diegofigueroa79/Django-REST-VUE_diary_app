@@ -1,18 +1,20 @@
 {% extends 'diary/base.html' %}
 {% block content %}
 
-<div class="row">
+
     <div class="col-md-12">
         <div class="entries">
             <div id="app">
                 <!-- Vue app is rendered here -->
                 <ul class="list-group">
                     <!-- render entries here -->
-                    <li class="list-group-item">[[ message ]]</li>
+                    <template v-for="entry in entries">
+                        <li class="list-group-item">[[ entry.title ]]</li>
+                    </template>
                 </ul>
             </div>
         </div>
     </div>
-</div>
+
 
 {% endblock %}
