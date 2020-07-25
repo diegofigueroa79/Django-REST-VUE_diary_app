@@ -1,0 +1,18 @@
+{% extends 'diary/base.html' %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <form>
+        <div class="form-group">
+            <label for="entry">Diary Entry</label>
+            <br>
+            <textarea class="form-control" name="entry" id="entry"
+             cols="30" rows="10" placeholder="Share your thoughts"></textarea>
+            <br>
+            <button class="btn btn-primary" type="button">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
