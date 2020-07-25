@@ -20,3 +20,8 @@ def index(request):
             return Response(serializer.data)
     
     return render(request, 'diary/index.html')
+
+@api_view(['GET', 'POST'])
+def add_entry(request):
+
+    return render(request, 'diary/entry.html')
