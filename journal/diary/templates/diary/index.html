@@ -11,7 +11,7 @@
                 <ul class="list-group">
                     <!-- render entries here -->
                     <template v-for="entry in entries" :key="entry.id">
-                        <li class="list-group-item">[[ entry.title ]]</li>
+                        <li class="list-group-item" v-on:click="getEntry(entry.id)">[[ entry.title ]]</li>
                     </template>
                 </ul>
             </div>
