@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -23,5 +23,11 @@ def index(request):
 
 @api_view(['GET', 'POST'])
 def add_entry(request):
+
+    if request.method == 'POST':
+        pk = request.data['id'][0]
+        entry = get_object_or_404(Entry, pk=pk)
+        print(entry)
+        return redirect('diary:index')
 
     return render(request, 'diary/entry.html')
