@@ -10,7 +10,7 @@
                 <!-- Vue app is rendered here -->
                 <ul class="list-group">
                     <!-- render entries here -->
-                    <template v-for="entry in entries">
+                    <template v-for="entry in entries" :key="entry.id">
                         <li class="list-group-item">[[ entry.title ]]</li>
                     </template>
                 </ul>
