@@ -14,7 +14,7 @@ function sendRequest(url, method, data) {
     });
     return r;
 }
-let test = [];
+let test = 0;
 let app = new Vue({
     delimiters: ["[[", "]]"],
     el: '#app',
@@ -33,6 +33,18 @@ let app = new Vue({
             .then(function(response){
                 vm.entries = response.data;
             });
+    },
+
+    methods: {
+        getEntry: function(entryId) {
+            let vm = this;
+            let form = new FormData();
+            form.append('id', entryId);
+            let r = sendRequest('entry/', 'post', form)
+                .then(function(response) {
+                    console.log('success');
+                });
+        }
     }
 })
 
