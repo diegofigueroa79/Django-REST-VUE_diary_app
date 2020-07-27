@@ -7,18 +7,16 @@ from .models import Entry
 from .serializers import EntrySerializer
 
 # Create your views here.
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def index(request):
-    entries = Entry.objects.all()
-    context = {
-        'entries': entries,
-    }
-    return render(request, 'diary/index.html', context)
 
-@api_view(['GET'])
-def add_entry(request):
-
-    return render(request, 'diary/entry.html')
+    if request.is_ajax():
+        if request.method == 'GET':
+            entries = Entry.objects.all()
+            serialized = EntrySerializer(entries, many=True)
+            return Response(serialized.data)
+    
+    return render(request, 'diary/index.html')
 
 @api_view(['GET'])
 def edit_entry(request, entryId):
