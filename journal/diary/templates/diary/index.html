@@ -4,16 +4,32 @@
 
 
     <div class="col-md-12">
-        <a class="btn btn-primary my-3" href="{% url 'diary:add' %}">Add an entry!</a>
-        <div class="entries">
-            <ul class="list-group">
-                <!-- render entries here -->
-                {% for entry in entries %}
-                    <a href="{% url 'diary:add' %}" style="text-decoration: none;">
-                        <li class="list-group-item">{{ entry.title }}</li>
-                    </a>
-                {% endfor %}
-             </ul>
+        <div id="app">
+            <button class="btn btn-primary my-3" type="button"
+            data-toggle="collapse" data-target="#form">Add an entry!</button>
+                <div class="form-display collapse" id="form">
+                    <form>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="entry">Diary Entry</label>
+                            <br>
+                            <textarea class="form-control" name="entry" id="entry"
+                            cols="30" rows="5" placeholder="Share your thoughts">[[ entry ]]</textarea>
+                            <br>
+                            <button class="btn btn-primary" type="button">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            <div class="entries">
+                <ul class="list-group">
+                    <!-- render entries here -->
+                    {% for entry in entries %}
+                        <a href="{% url 'diary:add' %}" style="text-decoration: none;">
+                            <li class="list-group-item">{{ entry.title }}</li>
+                        </a>
+                    {% endfor %}
+                 </ul>
+            </div>
         </div>
     </div>
     
