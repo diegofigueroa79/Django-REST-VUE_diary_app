@@ -19,3 +19,9 @@ def index(request):
 def add_entry(request):
 
     return render(request, 'diary/entry.html')
+
+@api_view(['GET'])
+def edit_entry(request, entryId):
+    entry = get_object_or_404(Entry, pk=entryId)
+    serialized = EntrySerializer(entry)
+    return Response(serialized.data)
