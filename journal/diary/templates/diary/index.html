@@ -6,15 +6,14 @@
     <div class="col-md-12">
         <a class="btn btn-primary my-3" href="{% url 'diary:add' %}">Add an entry!</a>
         <div class="entries">
-            <div id="app">
-                <!-- Vue app is rendered here -->
-                <ul class="list-group">
-                    <!-- render entries here -->
-                    <template v-for="entry in entries" :key="entry.id">
-                        <li class="list-group-item" v-on:click="getEntry(entry.id)">[[ entry.title ]]</li>
-                    </template>
-                </ul>
-            </div>
+            <ul class="list-group">
+                <!-- render entries here -->
+                {% for entry in entries %}
+                    <a href="{% url 'diary:add' %}" style="text-decoration: none;">
+                        <li class="list-group-item">{{ entry.title }}</li>
+                    </a>
+                {% endfor %}
+             </ul>
         </div>
     </div>
     
