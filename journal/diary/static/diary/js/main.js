@@ -12,12 +12,15 @@ function sendRequest(url, method, data){
     return r;
 }
 
-
+testvar = 0;
 const app = new Vue({
     el: '#app',
     delimiters: ["[[", "]]"],
     data: {
-        entry: '',
+        entry: {
+            title: '',
+            text: ''
+        },
         entries: '',
         form: false,
     },
@@ -28,5 +31,20 @@ const app = new Vue({
             .then(function(response){
                 vm.entries = response.data;
             })
+    },
+
+    methods: {
+        addEntry: function() {
+            vm = this;
+            form = new FormData();
+            form.append('title', vm.entry.title);
+            form.append('text', vm.entry.text);
+            sendRequest('entry/add/', 'post', form)
+                .then(function(response){
+                    vm.entries.push(response.data);
+                    vm.entry.title = '';
+                    vm.entry.text = '';
+                })
+        }
     }
 })

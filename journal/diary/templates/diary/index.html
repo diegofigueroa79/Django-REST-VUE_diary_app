@@ -11,12 +11,14 @@
                     <form>
                         {% csrf_token %}
                         <div class="form-group">
+                            <label for="title">Diary Title</label>
+                            <input type="text" class="form-control" name="title" id="title" v-model="entry.title">
+                            <br>
                             <label for="entry">Diary Entry</label>
-                            <br>
                             <textarea class="form-control" name="entry" id="entry"
-                            cols="30" rows="5" placeholder="Share your thoughts">[[ entry ]]</textarea>
+                            cols="30" rows="5" placeholder="Share your thoughts" v-model="entry.text"></textarea>
                             <br>
-                            <button class="btn btn-primary" type="button">Submit</button>
+                            <button class="btn btn-primary" type="button" v-on:click="addEntry">Submit</button>
                         </div>
                     </form>
                 </div>
