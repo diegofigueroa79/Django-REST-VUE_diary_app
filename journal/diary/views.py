@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseNotFound
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -17,6 +18,14 @@ def index(request):
             return Response(serialized.data)
     
     return render(request, 'diary/index.html')
+
+@api_view(['POST'])
+def add_entry(request):
+    serialized = EntrySerializer(data=request.data)
+    if serialized.is_valid():
+        serialized.save()
+        return Response(serialized.data)
+    return HttpResponseNotFound('hello')
 
 @api_view(['GET'])
 def edit_entry(request, entryId):
