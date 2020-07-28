@@ -40,5 +40,5 @@ $(document).ready(function(){
         mouseleave: function() {
             $(this).removeClass("active");
         }
-    }, "li");
+    }, ".card-header");
 })

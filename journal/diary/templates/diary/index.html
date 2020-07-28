@@ -23,9 +23,21 @@
             <div class="entries">
                 <ul class="list-group">
                     <!-- render entries here -->
-                    <li class="list-group-item" v-for="entry in entries" :key="entry.id">
-                        [[ entry.title ]]
-                    </li>
+                    <div class="accordion" id="accordion">
+                        <div class="card" v-for="entry in entries" :key="entry.id" >
+                            <div class="card-header">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                v-bind:data-target="'#' + entry.id">
+                                    [[ entry.title ]]
+                                </button>
+                            </div>
+                            <div v-bind:id="entry.id" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    [[ entry.text ]]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                  </ul>
             </div>
         </div>
