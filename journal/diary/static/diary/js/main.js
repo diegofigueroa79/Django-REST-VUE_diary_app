@@ -38,6 +38,13 @@ const app = new Vue({
     },
 
     methods: {
+        getEntries: function() {
+            let vm = this;
+            let r = sendRequest('', 'get',)
+                .then(function(response){
+                    vm.entries = response.data;
+                })
+        },
         addEntry: function() {
             vm = this;
             form = new FormData();
@@ -48,6 +55,18 @@ const app = new Vue({
                     vm.entries.push(response.data);
                     vm.entry.title = '';
                     vm.entry.text = '';
+                })
+        },
+        editEntry: function(entryID) {
+            vm = this;
+            form = new FormData();
+            form.append('title', vm.entry.title);
+            form.append('text', vm.editing_entry.text);
+            url = `entry/edit/${entryID}/`;
+            sendRequest(url, 'post', form)
+                .then(function(response){
+                    vm.editing_entry.text = '';
+                    vm.getEntries();
                 })
         }
     }
