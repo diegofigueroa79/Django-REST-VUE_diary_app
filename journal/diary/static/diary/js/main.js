@@ -68,6 +68,14 @@ const app = new Vue({
                     vm.editing_entry.text = '';
                     vm.getEntries();
                 })
+        },
+        deleteEntry: function(entryID) {
+            vm = this;
+            url = `entry/delete/${entryID}/`;
+            sendRequest(url, 'post', {})
+                .then(function(response){
+                    vm.getEntries();
+                })
         }
     }
 })
