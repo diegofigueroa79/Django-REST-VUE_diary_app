@@ -35,7 +35,7 @@
                                 </button>
                                 <!-- Another button for editing entry -->
                                 <button class="btn btn-primary float-right" type="button" data-toggle="collapse"
-                                v-bind:data-target="'#' + entry.id + 'Form'">Edit</button>
+                                v-bind:data-target="'#' + entry.id + 'Form'" v-on:click="editing_entry.text = entry.text">Edit</button>
                             </div>
                             <!-- Collapsed entry text -->
                             <div v-bind:id="entry.id" class="collapse" data-parent="#accordion">
@@ -51,7 +51,7 @@
                                         <div class="form-group">
                                             <label for="entry">Diary Entry</label>
                                             <textarea class="form-control" name="entry" cols="30" rows="5" 
-                                            placeholder="Share your thoughts" v-model="entry.text">[[ entry.text ]]</textarea>
+                                            placeholder="Share your thoughts" v-model="editing_entry.text"></textarea>
                                             <br>
                                             <button class="btn btn-primary" type="button" v-on:click="">Submit</button>
                                         </div>
