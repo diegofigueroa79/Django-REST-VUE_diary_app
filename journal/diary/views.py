@@ -27,8 +27,10 @@ def add_entry(request):
         return Response(serialized.data)
     return HttpResponseNotFound('hello')
 
-@api_view(['GET'])
+@api_view(['POST'])
 def edit_entry(request, entryId):
     entry = get_object_or_404(Entry, pk=entryId)
+    entry.text = request.data['text']
+    entry.save()
     serialized = EntrySerializer(entry)
     return Response(serialized.data)
