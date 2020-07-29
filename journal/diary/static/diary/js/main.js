@@ -21,6 +21,10 @@ const app = new Vue({
             title: '',
             text: ''
         },
+        editing_entry: {
+            title: '',
+            text: ''
+        },
         entries: '',
         form: false,
     },
