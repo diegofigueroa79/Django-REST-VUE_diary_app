@@ -34,3 +34,8 @@ def edit_entry(request, entryId):
     entry.save()
     serialized = EntrySerializer(entry)
     return Response(serialized.data)
+
+@api_view(['POST'])
+def delete_entry(request, entryId):
+    get_object_or_404(Entry, pk=entryId).delete()
+    return Response(data=None)
