@@ -53,7 +53,8 @@
                                             <textarea class="form-control" name="entry" cols="30" rows="5" 
                                             placeholder="Share your thoughts" v-model="editing_entry.text"></textarea>
                                             <br>
-                                            <button class="btn btn-primary" type="button" v-on:click="editEntry(entry.id)">Submit</button>
+                                            <button class="btn btn-primary" type="button" v-on:click="editEntry(entry.id)"
+                                            data-toggle="collapse" v-bind:data-target="'#' + entry.id">Submit</button>
                                         </div>
                                     </form>
                                 </div>
