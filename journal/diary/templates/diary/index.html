@@ -34,9 +34,10 @@
                                 v-bind:data-target="'#' + entry.id">
                                     [[ entry.title ]]
                                 </button>
-                                <!-- Delete Button -->
+                                <!-- Delete Button 
                                 <button class="btn btn-danger float-right ml-2" type="button" 
-                                v-on:click="deleteEntry(entry.id)">Delete</button>
+                                v-on:click="deleteEntry(entry.id)">Delete</button> -->
+                                <button-delete entryId="entry.id"></button-delete>
                                 <!-- Another button for editing entry -->
                                 <button class="btn btn-primary float-right" type="button" data-toggle="collapse"
                                 v-bind:data-target="'#' + entry.id + 'Form'" v-on:click="editing_entry.text = entry.text">Edit</button>

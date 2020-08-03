@@ -1,3 +1,5 @@
+//import {deleteButton} from './buttons.js'
+
 function sendRequest(url, method, data){
     let r = axios({
         url: url,
@@ -12,10 +14,13 @@ function sendRequest(url, method, data){
     return r;
 }
 
-testvar = 0;
+
 const app = new Vue({
     el: '#app',
     delimiters: ["[[", "]]"],
+    //components: {
+    //    'button-delete': deleteButton
+    //},
     data: {
         entry: {
             title: '',
